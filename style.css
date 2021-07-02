@@ -12,17 +12,21 @@ html{
 .main_div{
     width: 100vw;
     height: 100vh;
-    background-color: #29539b;
-background-image: linear-gradient(315deg, #29539b 0%, #1e3b70 74%);
+    background-image: linear-gradient( 
+315deg
+ , #ef5757 0%, #ba3737 74%);
 display: grid;
  place-items: center;        /* to make all thing in center */
 }
 .music_container{
     width:36rem;
     height: 55rem;
-    background-color: white;
+    background-color: #e96e6e;
     border-radius: 2rem;
-    box-shadow: 0 1.2rem 3rem 0.5rem black;
+    box-shadow: 0 0 5px #e96e6e,
+                0 0 25px black,
+                0 0 55px black,
+                0 0 70px rgba(0, 0, 0, 0.514);
     padding: 3rem;
     text-align: center;
 }
@@ -40,7 +44,7 @@ display: grid;
 }
 
 .music_container #artist{
-    color: #cccaca;
+    color: white;
     text-transform: capitalize;
     letter-spacing: 0.1rem;
     font-size: 2rem;
@@ -59,9 +63,11 @@ img{
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 1.2rem 3rem 0.5rem black;
-
+    box-shadow: 0 0 5px #da4a51, 0 0 25px #dc5be4, 0 0 55px #ea0a7c;
 }
+
+
+
 
 
 .music_controls{
@@ -69,13 +75,13 @@ img{
       display: flex;
       justify-content: space-between;
       margin: auto;
-      margin-top: 5rem;
+      margin-top: 1rem;
       align-items: center;
 }
 
 .music_controls .fas{
     color: black;
-    font-size: 2rem;
+    font-size: 2.5rem;
     cursor: pointer;
     filter: drop-shadow( 0 1.2rem 3rem 0.5rem black);
 }
@@ -94,13 +100,13 @@ img{
 
   }
   .music_controls .fas:hover{
-      color: blue;
+      color: #f7ecec;
       transition: 0.6s;
   }
 
   .music_controls .fa-play:hover{
       color: black;
-      background-color: grey;
+      background-color:white;
       box-shadow: 0 1.2rem 3rem 0.5rem black;
   }
 
@@ -117,3 +123,43 @@ img{
       
 
   }
+
+  /* progress style */
+
+  .progressbar_container{
+      width: 100%;
+      height: auto;
+      padding: 1rem 0;
+      margin-top: 1rem;
+    }
+
+    .progress_div{
+        width: 100%;
+        height: 0.5rem;
+        box-shadow: 0 1px 2px 0 #d11212,0 2px 4px 0 #d11212,0 4px 8px 0 #d11212,0 8px 16px 0 #d11212;
+        border-radius: 4rem;
+        margin-top:0.5rem ;
+        position: relative;
+        transition: width 1s linear;
+        cursor: pointer;
+        appearance: pointer;
+    }
+
+    .progress{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: black;
+        border-radius: 4rem;
+ transition: width 0.4s linear;
+       cursor: pointer;
+        appearance: pointer;
+    }
+
+    .progress_duration_meter{
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2rem;
+    }

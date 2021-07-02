@@ -7,6 +7,8 @@
         const next =document.getElementById('next');
         const prev =document.getElementById('prev');
 
+        
+
 
         const songs =  [
         {
@@ -17,7 +19,7 @@
         },
         {
             name:"music-2",
-            title:"Bandeya re Bandeya",
+            title:"Bandeya",
             artist:"ARIJIT SINGH",
 
         },
@@ -83,6 +85,56 @@
             playMusic();
 
         }
+
+
+
+        // progress js work
+        let progress=document.getElementById('progress');
+        let total_duration=document.getElementById('duration');
+        let current_time=document.getElementById('current_time');
+
+        music.addEventListener("timeupdate",(event) => {
+
+            const { currentTime,duration } = event.srcElement;   //inbuilt h yh data degga
+
+            let progress_time=(currentTime/duration)*100;
+            progress.style.width=`${progress_time}%`;
+
+
+            // duration update
+            let min_duration=Math.floor(duration/60);
+            let sec_duration=Math.floor(duration%60);          //maths.floor decimal hatane k luye
+
+             let tot_duration=`${min_duration}:${sec_duration}`;
+             if(duration)                             ///if lgaya taaki jbtk duration pata kre tbtk kcuh n aaye
+             total_duration.textContent = `${tot_duration}`;
+
+
+              //current time update
+             let min_current_time=Math.floor(currentTime/60);
+             let sec_current_time=Math.floor(currentTime%60);          //maths.floor decimal hatane k luye
+             if(sec_current_time< 10)
+             {
+                sec_current_time=`0${sec_current_time}`
+             }
+              let tot_current_time=`${min_current_time}:${sec_current_time}`;
+                                        ///if lgaya taaki jbtk duration pata kre tbtk kcuh n aaye
+              current_time.textContent = `${tot_current_time}`;
+
+        });
+
+        const progress_div=document.getElementById('progress_div');
+        //   progress on click
+
+        progress_div.addEventListener('click',(event) =>{
+            const{duration}=music;
+            let move_progress=(event.offsetX/event.srcElement.clientWidth)*duration;
+
+            music.currentTime=move_progress;
+        
+        })
+
+        music.addEventListener('ended',nextSong);
 
         next.addEventListener('click',nextSong);
         prev.addEventListener('click',prevSong);
